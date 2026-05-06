@@ -1,0 +1,98 @@
+---
+import { estimateSteps } from "../../data/site";
+---
+
+<section class="section section-soft" id="estimate">
+  <div class="container">
+    <div class="wizard-card" data-wizard>
+      <div class="wizard-top">
+        <h2 class="wizard-title">
+          Here’s <b>How Much It Should Cost</b> To Install<br />A New Walk-In Shower
+        </h2>
+      </div>
+      <form
+        class="wizard-body"
+        name="bath-estimate-wizard"
+        method="POST"
+        action="/thank-you/"
+        data-netlify="true"
+        netlify-honeypot="bot-field"
+      >
+        <input type="hidden" name="form-name" value="bath-estimate-wizard" />
+        <p class="hp">
+          <label>Do not fill this out: <input name="bot-field" /></label>
+        </p>
+        <div class="progress" aria-hidden="true">
+          <div class="progress-bar" data-progress></div>
+        </div>
+        {
+          estimateSteps.map((step, stepIndex) => (
+            <fieldset class:list={["wizard-step", stepIndex === 0 && "is-active"]} data-step={stepIndex}>
+              <legend class="step-title">{step.title}</legend>
+              <div class="choice-grid">
+                {step.options.map((option, optionIndex) => {
+                  const id = `${step.name}-${optionIndex}`;
+                  const inputName = step.type === "checkbox" ? `${step.name}[]` : step.name;
+                  const inputType = step.type === "checkbox" ? "checkbox" : "radio";
+                  return (
+                    <div class="choice">
+                      <input id={id} type={inputType} name={inputName} value={option} />
+                      <label for={id}>{option}</label>
+                    </div>
+                  );
+                })}
+              </div>
+            </fieldset>
+          ))
+        }
+        <fieldset class="wizard-step" data-step={estimateSteps.length}>
+          <legend class="step-title">Your information</legend>
+          <div class="field-grid">
+            <input class="input" type="text" name="zip" placeholder="Zip code" autocomplete="postal-code" />
+            <input class="input" type="text" name="name" placeholder="Your name" autocomplete="name" />
+            <input class="input" type="tel" name="phone" placeholder="Your phone" autocomplete="tel" required />
+            <input class="input" type="email" name="email" placeholder="Your Email" autocomplete="email" />
+          </div>
+        </fieldset>
+        <div class="wizard-actions">
+          <button class="btn btn-outline" type="button" data-prev>Back</button>
+          <button class="btn" type="button" data-next>Next step</button>
+          <button class="btn" type="submit" data-submit hidden>Submit</button>
+        </div>
+      </form>
+    </div>
+  </div>
+</section>
+
+<script>
+  document.querySelectorAll("[data-wizard]").forEach((wizard) => {
+    const steps = Array.from(wizard.querySelectorAll("[data-step]"));
+    const prev = wizard.querySelector("[data-prev]");
+    const next = wizard.querySelector("[data-next]");
+    const submit = wizard.querySelector("[data-submit]");
+    const progress = wizard.querySelector("[data-progress]");
+    let current = 0;
+
+    function render() {
+      steps.forEach((step, index) => step.classList.toggle("is-active", index === current));
+      if (prev instanceof HTMLButtonElement) prev.style.visibility = current === 0 ? "hidden" : "visible";
+      if (next instanceof HTMLButtonElement) next.hidden = current === steps.length - 1;
+      if (submit instanceof HTMLButtonElement) submit.hidden = current !== steps.length - 1;
+      if (progress instanceof HTMLElement) {
+        progress.style.setProperty("--progress", `${((current + 1) / steps.length) * 100}%`);
+      }
+    }
+
+    prev?.addEventListener("click", () => {
+      current = Math.max(0, current - 1);
+      render();
+    });
+
+    next?.addEventListener("click", () => {
+      current = Math.min(steps.length - 1, current + 1);
+      render();
+    });
+
+    render();
+  });
+</script>

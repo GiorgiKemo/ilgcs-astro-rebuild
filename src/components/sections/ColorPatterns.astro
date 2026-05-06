@@ -1,0 +1,37 @@
+---
+import { colors, patterns } from "../../data/site";
+---
+
+<section class="section" id="colors">
+  <div class="container">
+    <h2 class="section-title">Colors &amp; Patterns</h2>
+    <p class="section-lede">Keep the design choice simple with wall colors and tile patterns that fit the bathroom.</p>
+    <div class="swatch-grid">
+      {
+        colors.map((item) => (
+          <article class="swatch">
+            <img src={item.image} alt={`${item.name} shower wall color`} loading="lazy" />
+            <span>{item.name}</span>
+          </article>
+        ))
+      }
+    </div>
+  </div>
+</section>
+
+<section class="section section-soft">
+  <div class="container">
+    <h2 class="section-title">Pattern Options</h2>
+    <p class="section-lede">Tile-look wall systems give a finished look without the upkeep of traditional grout.</p>
+    <div class="swatch-grid">
+      {
+        patterns.map((item) => (
+          <article class="swatch">
+            <img src={item.image} alt={`${item.name} shower wall pattern`} loading="lazy" />
+            <span>{item.name}</span>
+          </article>
+        ))
+      }
+    </div>
+  </div>
+</section>

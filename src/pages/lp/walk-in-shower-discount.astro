@@ -1,0 +1,28 @@
+---
+import BaseLayout from "../../layouts/BaseLayout.astro";
+import ColorPatterns from "../../components/sections/ColorPatterns.astro";
+import ContactBand from "../../components/sections/ContactBand.astro";
+import Hero from "../../components/sections/Hero.astro";
+import InstallationOptions from "../../components/sections/InstallationOptions.astro";
+import Testimonials from "../../components/sections/Testimonials.astro";
+import { localBusinessSchema, serviceSchema } from "../../data/site";
+---
+
+<BaseLayout
+  title="Walk-In Shower Discount | ILGCS"
+  description="Request a walk-in shower estimate and ask about current ILGCS discount offers for local homeowners."
+  canonical="https://ilgcs.com/lp/walk-in-shower-discount/"
+  noindex={true}
+  schema={[localBusinessSchema, serviceSchema("Walk-In Shower Installation")]}
+>
+  <Hero
+    adStyle={true}
+    title="Get a safer, cleaner <b>walk-in shower</b>"
+    subtitle="Low-threshold entry, easy-clean wall systems, seats, grab bars, and glass door options."
+    service="Walk-In Shower Discount Landing Page"
+  />
+  <InstallationOptions />
+  <ColorPatterns />
+  <Testimonials />
+  <ContactBand />
+</BaseLayout>

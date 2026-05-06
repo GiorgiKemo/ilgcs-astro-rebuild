@@ -1,0 +1,24 @@
+---
+import { problemSolutions } from "../../data/site";
+---
+
+<section class="section" id="solutions">
+  <div class="container">
+    <h2 class="section-title">A Solution For All Your Bathroom Problems</h2>
+    <p class="section-lede">
+      From outdated tubs to hard-to-clean grout, the right bath system can make the room easier to use and easier to
+      maintain.
+    </p>
+    <div class="problem-grid">
+      {
+        problemSolutions.map((item) => (
+          <article class="problem-card">
+            <img src={item.image} alt="" loading="lazy" />
+            <h3>{item.title}</h3>
+            <p>{item.description}</p>
+          </article>
+        ))
+      }
+    </div>
+  </div>
+</section>

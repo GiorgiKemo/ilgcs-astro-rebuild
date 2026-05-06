@@ -1,0 +1,28 @@
+---
+import BaseLayout from "../../layouts/BaseLayout.astro";
+import ColorPatterns from "../../components/sections/ColorPatterns.astro";
+import ContactBand from "../../components/sections/ContactBand.astro";
+import EstimateWizard from "../../components/sections/EstimateWizard.astro";
+import Hero from "../../components/sections/Hero.astro";
+import InstallationOptions from "../../components/sections/InstallationOptions.astro";
+import ProblemSolutions from "../../components/sections/ProblemSolutions.astro";
+import ServiceAreaSeo from "../../components/sections/ServiceAreaSeo.astro";
+import Testimonials from "../../components/sections/Testimonials.astro";
+import { faqSchema, localBusinessSchema, serviceSchema } from "../../data/site";
+---
+
+<BaseLayout
+  title="Walk-In Shower & Bath Remodeling in Schaumburg, IL | ILGCS"
+  description="Get a stylish walk-in shower or bath remodel from IL General Construction Services. One-day installation options, US-made products, discount offers, and free estimates."
+  canonical="https://ilgcs.com/bath/"
+  schema={[localBusinessSchema, serviceSchema("Walk-In Shower Installation"), faqSchema()]}
+>
+  <Hero />
+  <EstimateWizard />
+  <InstallationOptions />
+  <ColorPatterns />
+  <ProblemSolutions />
+  <Testimonials />
+  <ServiceAreaSeo town="Schaumburg" service="bathroom remodeling" />
+  <ContactBand />
+</BaseLayout>

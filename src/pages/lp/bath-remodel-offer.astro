@@ -1,0 +1,26 @@
+---
+import BaseLayout from "../../layouts/BaseLayout.astro";
+import ContactBand from "../../components/sections/ContactBand.astro";
+import Hero from "../../components/sections/Hero.astro";
+import InstallationOptions from "../../components/sections/InstallationOptions.astro";
+import Testimonials from "../../components/sections/Testimonials.astro";
+import { localBusinessSchema, serviceSchema } from "../../data/site";
+---
+
+<BaseLayout
+  title="Bath Remodel Discount Offer | ILGCS"
+  description="Claim the current ILGCS bath remodel discount offer. Request a fast estimate for a walk-in shower or bathroom remodeling project."
+  canonical="https://ilgcs.com/lp/bath-remodel-offer/"
+  noindex={true}
+  schema={[localBusinessSchema, serviceSchema("Bathroom Remodeling")]}
+>
+  <Hero
+    adStyle={true}
+    title="<b>Bath Remodel Discount</b> For Local Homeowners"
+    subtitle="Request your estimate today and ask about current savings on walk-in shower and tub-to-shower projects."
+    service="Bath Remodel Discount Landing Page"
+  />
+  <InstallationOptions />
+  <Testimonials />
+  <ContactBand />
+</BaseLayout>

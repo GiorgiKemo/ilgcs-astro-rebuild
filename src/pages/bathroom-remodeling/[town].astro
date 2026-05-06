@@ -1,0 +1,36 @@
+---
+import BaseLayout from "../../layouts/BaseLayout.astro";
+import ColorPatterns from "../../components/sections/ColorPatterns.astro";
+import ContactBand from "../../components/sections/ContactBand.astro";
+import EstimateWizard from "../../components/sections/EstimateWizard.astro";
+import Hero from "../../components/sections/Hero.astro";
+import InstallationOptions from "../../components/sections/InstallationOptions.astro";
+import ServiceAreaSeo from "../../components/sections/ServiceAreaSeo.astro";
+import Testimonials from "../../components/sections/Testimonials.astro";
+import { faqSchema, localBusinessSchema, serviceSchema, towns } from "../../data/site";
+
+export function getStaticPaths() {
+  return towns.map((town) => ({ params: { town: town.slug }, props: { town } }));
+}
+
+const { town } = Astro.props;
+---
+
+<BaseLayout
+  title={`Bathroom Remodeling in ${town.name}, IL | ILGCS`}
+  description={`Looking for a bathroom remodeler near ${town.name}, IL? ILGCS offers walk-in showers, tub-to-shower conversions, and free bath remodeling estimates.`}
+  canonical={`https://ilgcs.com/bathroom-remodeling/${town.slug}/`}
+  schema={[localBusinessSchema, serviceSchema("Bathroom Remodeling", town.name), faqSchema()]}
+>
+  <Hero
+    title={`Bathroom remodeling in <b>${town.name}, IL</b>`}
+    subtitle="Walk-in showers, tub-to-shower conversions, safer access, cleaner wall systems, and fast local estimates."
+    service={`Bathroom Remodeling in ${town.name}, IL`}
+  />
+  <ServiceAreaSeo town={town.name} service="bathroom remodeling" />
+  <InstallationOptions />
+  <ColorPatterns />
+  <EstimateWizard />
+  <Testimonials />
+  <ContactBand />
+</BaseLayout>

@@ -1,0 +1,45 @@
+---
+import { site } from "../../data/site";
+
+interface Props {
+  formName?: string;
+  title?: string;
+  subtitle?: string;
+  service?: string;
+  buttonText?: string;
+}
+
+const {
+  formName = "lead-inquiry",
+  title = "Request Your Free Estimate",
+  subtitle = "Tell us what you need and the ILGCS team will follow up.",
+  service = "Bathroom Remodeling",
+  buttonText = "Submit"
+} = Astro.props;
+---
+
+<div class="lead-card">
+  <h3>{title}</h3>
+  <p>{subtitle}</p>
+  <form
+    class="lead-form"
+    name={formName}
+    method="POST"
+    action="/thank-you/"
+    data-netlify="true"
+    netlify-honeypot="bot-field"
+  >
+    <input type="hidden" name="form-name" value={formName} />
+    <input type="hidden" name="service" value={service} />
+    <p class="hp">
+      <label>Do not fill this out: <input name="bot-field" /></label>
+    </p>
+    <input class="input" type="text" name="name" placeholder="Your Name" autocomplete="name" />
+    <input class="input" type="tel" name="phone" placeholder="Your Phone" autocomplete="tel" required />
+    <input class="input" type="email" name="email" placeholder="Your Email" autocomplete="email" />
+    <input class="input" type="text" name="address" placeholder="Address" autocomplete="street-address" />
+    <textarea class="textarea" name="message" rows="4" placeholder="Project Type / Message">{service}</textarea>
+    <button class="btn" type="submit">{buttonText}</button>
+    <span class="form-note">Prefer calling? <a href={site.phoneHref}>{site.phone}</a></span>
+  </form>
+</div>

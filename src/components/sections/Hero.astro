@@ -1,0 +1,58 @@
+---
+import LeadForm from "../ui/LeadForm.astro";
+import { bathAssets, proofPoints, site } from "../../data/site";
+
+interface Props {
+  title?: string;
+  subtitle?: string;
+  showForm?: boolean;
+  service?: string;
+  adStyle?: boolean;
+}
+
+const {
+  title = "Finally, a stylish <b>walk-in</b> shower — <b>available to everyone</b>!",
+  subtitle = "Just focus on the design choice: we'll <b>install everything in 1 day</b>, and it will serve you <b>for decades</b>.",
+  showForm = true,
+  service = "Walk-In Shower Estimate",
+  adStyle = false
+} = Astro.props;
+---
+
+<section class:list={["hero", adStyle && "ad-hero"]} style={`--hero-image: url('${bathAssets.hero}')`}>
+  <div class="container hero-inner">
+    <div class="hero-copy">
+      <h1 class="hero-title" set:html={title} />
+      <p class="hero-subtitle" set:html={subtitle} />
+      <div class="proof-grid" aria-label="Project proof points">
+        {proofPoints.map((point) => (
+          <div class="proof-card">
+            <strong>{point.value}</strong>
+            <span>{point.label}</span>
+          </div>
+        ))}
+      </div>
+      <a class="btn" href={site.phoneHref}>Call Us {site.phone}</a>
+    </div>
+    <div class="hero-panel">
+      {
+        showForm ? (
+          <LeadForm
+            formName="hero-estimate"
+            title="Get Your Free Estimate"
+            subtitle="Request a callback for bathroom remodeling or walk-in shower installation."
+            service={service}
+            buttonText="Request Estimate"
+          />
+        ) : (
+          <div class="offer-card">
+            <img src={bathAssets.gift} alt="" width="160" height="160" />
+            <h2>Fast Estimates For Bath Remodeling</h2>
+            <p>Local service, clean installation, and practical options for your bathroom.</p>
+            <a class="btn" href="#estimate">Start Estimate</a>
+          </div>
+        )
+      }
+    </div>
+  </div>
+</section>

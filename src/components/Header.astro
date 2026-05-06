@@ -1,0 +1,24 @@
+---
+import { navItems, site } from "../data/site";
+---
+
+<div class="topbar">
+  <div class="container topbar-inner">
+    <ul class="topbar-list" aria-label="Office contact details">
+      <li><a href={site.mapUrl} target="_blank" rel="noreferrer">{site.address}</a></li>
+      <li><a href={`mailto:${site.email}`}>{site.email}</a></li>
+    </ul>
+    <strong>NEED HELP NOW? <a href={site.phoneHref}>{site.phone}</a></strong>
+  </div>
+</div>
+<header class="site-header">
+  <div class="container header-inner">
+    <a class="logo" href="/bath/" aria-label={`${site.name} bath page`}>
+      <img src={site.logo} alt={`${site.name} logo`} width="300" height="92" loading="eager" />
+    </a>
+    <nav class="nav" aria-label="Main navigation">
+      {navItems.map((item) => <a href={item.href}>{item.label}</a>)}
+    </nav>
+    <a class="btn" href={site.phoneHref}>Call Us {site.phone}</a>
+  </div>
+</header>

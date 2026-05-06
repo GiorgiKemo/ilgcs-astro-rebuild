@@ -1,0 +1,26 @@
+---
+import BaseLayout from "../layouts/BaseLayout.astro";
+import ContactBand from "../components/sections/ContactBand.astro";
+import Hero from "../components/sections/Hero.astro";
+import InstallationOptions from "../components/sections/InstallationOptions.astro";
+import ServiceAreaSeo from "../components/sections/ServiceAreaSeo.astro";
+import Testimonials from "../components/sections/Testimonials.astro";
+import { localBusinessSchema } from "../data/site";
+---
+
+<BaseLayout
+  title="IL General Construction Services | Bathroom Remodeling Schaumburg IL"
+  description="ILGCS provides bathroom remodeling, walk-in shower installation, and construction services for Schaumburg and nearby Illinois suburbs."
+  canonical="https://ilgcs.com/"
+  schema={localBusinessSchema}
+>
+  <Hero
+    title="Bathroom remodeling and <b>walk-in showers</b> for Schaumburg homeowners"
+    subtitle="Fast estimates, clean installation, local service, and practical design options from IL General Construction Services."
+    service="Bathroom Remodeling"
+  />
+  <InstallationOptions />
+  <ServiceAreaSeo town="Schaumburg" service="bathroom remodeling" />
+  <Testimonials />
+  <ContactBand />
+</BaseLayout>

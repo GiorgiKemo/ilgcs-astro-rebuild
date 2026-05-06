@@ -1,0 +1,20 @@
+---
+import BaseLayout from "../layouts/BaseLayout.astro";
+import { site } from "../data/site";
+---
+
+<BaseLayout
+  title="Thank You | ILGCS"
+  description="Thank you for contacting IL General Construction Services."
+  canonical="https://ilgcs.com/thank-you/"
+  noindex={true}
+  showPopup={false}
+>
+  <section class="section section-soft">
+    <div class="container" style="max-width: 760px; text-align: center;">
+      <h1 class="section-title">Thank you</h1>
+      <p class="section-lede">Your request was received. The ILGCS team will follow up as soon as possible.</p>
+      <a class="btn" href={site.phoneHref}>Call {site.phone}</a>
+    </div>
+  </section>
+</BaseLayout>

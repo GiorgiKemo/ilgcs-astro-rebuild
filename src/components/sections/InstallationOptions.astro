@@ -1,0 +1,48 @@
+---
+import { featureOptions, installationOptions } from "../../data/site";
+---
+
+<section class="section" id="options">
+  <div class="container">
+    <h2 class="section-title">Installation Options</h2>
+    <p class="section-lede">
+      Gorgeous shower and bathtub remodels in <b>just 1 day</b>. See how these remodels can transform an old bathroom
+      into a cleaner, safer, and more luxurious space.
+    </p>
+    <div class="cards-grid">
+      {
+        installationOptions.map((option) => (
+          <article class="option-card">
+            <div class="option-media">
+              <video src={option.src} poster={option.poster} autoplay muted loop playsinline controlslist="nodownload" />
+            </div>
+            <div class="option-body">
+              <h3>{option.title}</h3>
+              <p>{option.description}</p>
+            </div>
+          </article>
+        ))
+      }
+    </div>
+  </div>
+</section>
+
+<section class="section section-soft">
+  <div class="container">
+    <h2 class="section-title">Custom Built To Any Size, Space &amp; Need</h2>
+    <p class="section-lede">Choose the safety, comfort, and finish details that make sense for the homeowner.</p>
+    <div class="feature-grid">
+      {
+        featureOptions.map((feature) => (
+          <article class="feature-card">
+            <img src={feature.image} alt={feature.title} loading="lazy" />
+            <div>
+              <h3>{feature.title}</h3>
+              <p>{feature.description}</p>
+            </div>
+          </article>
+        ))
+      }
+    </div>
+  </div>
+</section>

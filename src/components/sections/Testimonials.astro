@@ -1,0 +1,24 @@
+---
+import { reviews, site } from "../../data/site";
+---
+
+<section class="section section-soft" id="reviews">
+  <div class="container">
+    <h2 class="section-title">What Our Client's Say</h2>
+    <p class="section-lede">Excellent Google review profile, local construction experience, and bathroom project proof.</p>
+    <div class="review-grid">
+      {
+        reviews.map((review) => (
+          <article class="review-card">
+            <div class="stars" aria-label="5 stars">★★★★★</div>
+            <p>{review.text}</p>
+            <strong>{review.name}</strong>
+          </article>
+        ))
+      }
+    </div>
+    <p style="text-align:center;margin-top:28px">
+      <a class="btn btn-blue" href={site.reviewUrl} target="_blank" rel="noreferrer">View more reviews</a>
+    </p>
+  </div>
+</section>

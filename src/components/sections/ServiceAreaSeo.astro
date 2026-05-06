@@ -1,0 +1,45 @@
+---
+import LeadForm from "../ui/LeadForm.astro";
+import { towns } from "../../data/site";
+
+interface Props {
+  town?: string;
+  service?: string;
+  title?: string;
+}
+
+const { town = "Schaumburg", service = "bathroom remodeling", title } = Astro.props;
+const heading = title ?? `${service[0].toUpperCase()}${service.slice(1)} in ${town}, IL`;
+---
+
+<section class="section">
+  <div class="container seo-block">
+    <div class="seo-copy">
+      <h2>{heading}</h2>
+      <p>
+        ILGCS helps homeowners in {town}, IL update bathrooms with practical design choices, cleaner shower systems,
+        safer access, and a clear estimate process. This page is built for local search intent like
+        <strong> bathroom remodeler near me</strong>, <strong>{service} {town}</strong>, and service-plus-town queries.
+      </p>
+      <h3>What the estimate can include</h3>
+      <ul>
+        <li>Tub-to-shower conversion options</li>
+        <li>Walk-in shower replacement systems</li>
+        <li>Low-threshold bases, seats, grab bars, doors, and fixtures</li>
+        <li>Color and wall pattern recommendations</li>
+        <li>Photos, measurements, timeline, and current discount details</li>
+      </ul>
+      <h3>Nearby service areas</h3>
+      <div class="area-list">
+        {towns.map((item) => <a href={`/bathroom-remodeling/${item.slug}/`}>{item.name}</a>)}
+      </div>
+    </div>
+    <LeadForm
+      formName={`${service.replaceAll(" ", "-")}-${town.toLowerCase().replaceAll(" ", "-")}`}
+      title={`Request A ${town} Estimate`}
+      subtitle="Tell us about the bathroom and we will follow up."
+      service={`${service} in ${town}, IL`}
+      buttonText="Request Estimate"
+    />
+  </div>
+</section>
