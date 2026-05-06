@@ -22,12 +22,27 @@ export const site = {
 };
 
 export const navItems = [
-  { label: "Bath", href: "/bath/" },
-  { label: "Options", href: "/bath/#options" },
-  { label: "Colors", href: "/bath/#colors" },
-  { label: "Reviews", href: "/bath/#reviews" },
-  { label: "Contact", href: "/bath/#contact" }
+  { label: "Services", href: "/services/" },
+  { label: "Portfolio", href: "/portfolio/" },
+  { label: "About Us", href: "/about-us/" },
+  { label: "Testimonials", href: "/testimonials/" },
+  { label: "Quote", href: "/request-a-quote/" },
+  { label: "Blog", href: "/category/blog/" },
+  { label: "Contact", href: "/contact-us/" }
 ];
+
+export const companyAssets = {
+  hero: `${uploads}/2024/02/2-11.jpg`,
+  pattern: `${uploads}/2024/02/pattern-bacground.png`,
+  menuBg: `${uploads}/2024/02/menubg.png`,
+  quoteBg: `${uploads}/2024/02/offer-bg-1.jpg`,
+  icons: [
+    `${uploads}/2024/02/ics1.jpg`,
+    `${uploads}/2024/02/ics2.jpg`,
+    `${uploads}/2024/02/ics3.jpg`,
+    `${uploads}/2024/02/ics4.jpg`
+  ]
+};
 
 export const bathAssets = {
   hero: `${uploads}/2025/12/arctic-ice.a1ddca7d.jpg`,
@@ -48,6 +63,145 @@ export const bathAssets = {
     easyClean: `${uploads}/2025/12/easyToClean-2-cover.webp`
   }
 };
+
+export const companyProof = [
+  { value: "20+", label: "Years of trade experience" },
+  { value: "Local", label: "Schaumburg-area contractor" },
+  { value: "Interior + exterior", label: "Kitchen, bath, floors, decks, masonry" }
+];
+
+export const servicePages = [
+  {
+    title: "Kitchen Remodeling",
+    slug: "kitchen-remodeling-chicago-il",
+    aliases: ["kitchen-remodeling"],
+    summary:
+      "Kitchen remodels planned around cabinetry, counters, layout, flooring, lighting, and everyday workflow.",
+    description:
+      "ILGCS updates kitchens with practical layouts, durable finish selections, cabinet and counter coordination, flooring, backsplash work, and clean installation management.",
+    image: companyAssets.hero,
+    highlights: ["Cabinet and layout updates", "Countertop and backsplash coordination", "Flooring, lighting, and finish details"],
+    seoTitle: "Kitchen Remodeling in Chicago Suburbs | ILGCS",
+    seoDescription:
+      "Kitchen remodeling services from ILGCS for Schaumburg and nearby Illinois communities. Request a local estimate for cabinets, counters, flooring, and finishes."
+  },
+  {
+    title: "Bathroom Remodeling",
+    slug: "bathroom-remodeling-chicago-il",
+    aliases: ["bathroom-remodeling"],
+    summary:
+      "Bathroom remodels, shower replacements, tub-to-shower conversions, fixture updates, and safer low-maintenance finishes.",
+    description:
+      "From full bath updates to walk-in shower systems, ILGCS helps homeowners improve comfort, safety, storage, and resale appeal with a clean remodeling process.",
+    image: bathAssets.covers.tubToShower,
+    highlights: ["Walk-in showers and tub-to-shower conversions", "Walls, floors, fixtures, and doors", "Local estimate and clean installation"],
+    seoTitle: "Bathroom Remodeling in Chicago Suburbs | ILGCS",
+    seoDescription:
+      "Bathroom remodeling, walk-in shower installation, and tub-to-shower conversion services for Schaumburg and nearby Illinois suburbs."
+  },
+  {
+    title: "Flooring Installation",
+    slug: "flooring-installation",
+    aliases: [],
+    summary:
+      "Flooring installation for remodels, replacements, and room updates where durability and finish quality matter.",
+    description:
+      "ILGCS installs and coordinates flooring as part of remodeling projects, helping homeowners choose surfaces that fit the room, traffic, and maintenance needs.",
+    image: bathAssets.covers.floor,
+    highlights: ["Removal and prep coordination", "Finish options for kitchens, baths, and basements", "Clean transitions and detail work"],
+    seoTitle: "Flooring Installation in Schaumburg, IL | ILGCS",
+    seoDescription:
+      "Flooring installation and remodel coordination for Schaumburg, Chicago suburbs, and nearby Illinois communities."
+  },
+  {
+    title: "Deck Building",
+    slug: "deck-building",
+    aliases: ["deck-builder-chicago"],
+    summary:
+      "Deck construction and exterior updates for outdoor living spaces that need structure, safety, and clean finishing.",
+    description:
+      "ILGCS builds and updates decks with attention to framing, access, railings, surface materials, and details that hold up through Illinois seasons.",
+    image: companyAssets.quoteBg,
+    highlights: ["Deck builds and replacements", "Rails, steps, and structural details", "Exterior finish coordination"],
+    seoTitle: "Deck Building in Chicago Suburbs | ILGCS",
+    seoDescription:
+      "Deck building and exterior construction services from ILGCS for Schaumburg and nearby Illinois suburbs."
+  },
+  {
+    title: "Masonry",
+    slug: "masonry-services-chicago-il",
+    aliases: [],
+    summary:
+      "Masonry repairs and improvements for exterior surfaces, hardscape details, and construction projects.",
+    description:
+      "ILGCS handles masonry work with a focus on durable repairs, clean transitions, and practical improvements for homes and commercial spaces.",
+    image: bathAssets.covers.fixtures,
+    highlights: ["Masonry repair and updates", "Exterior construction details", "Durable finish work"],
+    seoTitle: "Masonry Services in Chicago Suburbs | ILGCS",
+    seoDescription:
+      "Masonry services from ILGCS for Schaumburg, Chicago suburbs, and nearby Illinois communities."
+  },
+  {
+    title: "One-Day Remodeling",
+    slug: "one-day-remodeling-chicago-il",
+    aliases: [],
+    summary:
+      "Fast remodel options for focused updates, especially shower and bath projects with the right scope and materials.",
+    description:
+      "Some projects can be completed quickly when design, measurements, and materials are confirmed in advance. ILGCS keeps the scope practical and the schedule clear.",
+    image: bathAssets.covers.showerDoors,
+    highlights: ["Focused project scope", "Prepared materials and measurements", "Clean installation scheduling"],
+    seoTitle: "One-Day Remodeling in Chicago Suburbs | ILGCS",
+    seoDescription:
+      "One-day remodeling options for showers and focused home updates from ILGCS in Schaumburg and nearby suburbs."
+  },
+  {
+    title: "Basement Remodeling",
+    slug: "basement-remodeling-chicago-il",
+    aliases: [],
+    summary:
+      "Basement remodeling for living areas, bathrooms, storage, finishes, and practical lower-level upgrades.",
+    description:
+      "ILGCS helps turn basements into more useful finished space with thoughtful layouts, flooring, walls, bathrooms, and finish coordination.",
+    image: bathAssets.covers.easyClean,
+    highlights: ["Finished lower-level spaces", "Basement bathrooms and storage", "Flooring, walls, and trim details"],
+    seoTitle: "Basement Remodeling in Chicago Suburbs | ILGCS",
+    seoDescription:
+      "Basement remodeling services for Schaumburg and nearby Illinois communities from IL General Construction Services."
+  }
+];
+
+export const portfolioItems = [
+  { title: "Kitchen Layout Update", category: "Kitchen Remodeling", image: companyAssets.hero },
+  { title: "Tub-To-Shower Conversion", category: "Bathroom Remodeling", image: bathAssets.covers.tubToShower },
+  { title: "Custom Shower Doors", category: "Bathroom Remodeling", image: bathAssets.covers.showerDoors },
+  { title: "Shower Seat Detail", category: "Safety Upgrades", image: bathAssets.covers.showerSeat },
+  { title: "Slip-Resistant Shower Floor", category: "Bathroom Remodeling", image: bathAssets.covers.floor },
+  { title: "Fixtures And Wall Finish", category: "Bathroom Remodeling", image: bathAssets.covers.fixtures },
+  { title: "Grab Bar Installation", category: "Safety Upgrades", image: bathAssets.covers.grabBars },
+  { title: "Low-Maintenance Surface", category: "Bathroom Remodeling", image: bathAssets.covers.easyClean }
+];
+
+export const blogPosts = [
+  {
+    title: "How to Plan a Bathroom Remodel Around Safety and Cleaning",
+    href: "/bath/",
+    excerpt:
+      "Practical choices for low-threshold entries, grab bars, wall systems, seating, and finishes that reduce maintenance."
+  },
+  {
+    title: "Kitchen Remodeling Scope: What to Decide Before You Request an Estimate",
+    href: "/kitchen-remodeling-chicago-il/",
+    excerpt:
+      "The most useful estimate starts with layout goals, cabinet direction, counters, flooring, lighting, and must-have storage."
+  },
+  {
+    title: "Choosing the Right Contractor for a Local Remodel",
+    href: "/about-us/",
+    excerpt:
+      "Look for clear communication, realistic sequencing, clean work habits, and a team that can explain the tradeoffs."
+  }
+];
 
 export const proofPoints = [
   { value: "1-DAY", label: "Installation" },

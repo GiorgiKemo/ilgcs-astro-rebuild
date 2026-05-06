@@ -1,0 +1,35 @@
+---
+import { companyAssets, site } from "../../data/site";
+
+interface Props {
+  eyebrow?: string;
+  title: string;
+  subtitle: string;
+  image?: string;
+  ctaHref?: string;
+  ctaLabel?: string;
+}
+
+const {
+  eyebrow = site.shortName,
+  title,
+  subtitle,
+  image = companyAssets.hero,
+  ctaHref = "/request-a-quote/",
+  ctaLabel = "Request a Quote"
+} = Astro.props;
+---
+
+<section class="page-hero" style={`--page-hero-image: url('${image}')`}>
+  <div class="container page-hero-inner">
+    <div>
+      <span class="eyebrow">{eyebrow}</span>
+      <h1>{title}</h1>
+      <p>{subtitle}</p>
+      <div class="hero-actions">
+        <a class="btn" href={ctaHref}>{ctaLabel}</a>
+        <a class="btn btn-outline" href={site.phoneHref}>Call {site.phone}</a>
+      </div>
+    </div>
+  </div>
+</section>

@@ -1,0 +1,68 @@
+---
+import BaseLayout from "../layouts/BaseLayout.astro";
+import ContactBand from "../components/sections/ContactBand.astro";
+import PageHero from "../components/sections/PageHero.astro";
+import ServicesGrid from "../components/sections/ServicesGrid.astro";
+import { companyAssets, localBusinessSchema, servicePages } from "../data/site";
+---
+
+<BaseLayout
+  title="Professional Kitchen, Bathroom, & Floor Remodeling Services | ILGCS"
+  description="Explore ILGCS remodeling and construction services including kitchen remodeling, bathroom remodeling, flooring installation, deck building, masonry, one-day remodeling, and basement remodeling."
+  canonical="https://ilgcs.com/services/"
+  schema={localBusinessSchema}
+>
+  <PageHero
+    eyebrow="Services"
+    title="Professional remodeling and construction services"
+    subtitle="A full-service view of the original ILGCS website: kitchens, bathrooms, flooring, decks, masonry, one-day remodel options, and basements."
+    image={companyAssets.hero}
+  />
+
+  <section class="section">
+    <div class="container">
+      <h2 class="section-title">Choose the right service for your project</h2>
+      <p class="section-lede">
+        Each page gives the site a clear SEO target and gives homeowners a focused place to request an estimate.
+      </p>
+      <ServicesGrid />
+    </div>
+  </section>
+
+  <section class="section section-soft">
+    <div class="container process-grid">
+      <article>
+        <strong>1</strong>
+        <h3>Talk through the project</h3>
+        <p>Start with the room, goals, timing, and must-have details.</p>
+      </article>
+      <article>
+        <strong>2</strong>
+        <h3>Confirm scope</h3>
+        <p>Measurements, materials, sequence, and trade details are clarified before work starts.</p>
+      </article>
+      <article>
+        <strong>3</strong>
+        <h3>Build cleanly</h3>
+        <p>The team focuses on practical installation, cleanup, and finish quality.</p>
+      </article>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="container">
+      <h2 class="section-title">All service URLs from the original menu</h2>
+      <div class="area-list service-link-list">
+        {servicePages.map((service) => <a href={`/${service.slug}/`}>{service.title}</a>)}
+      </div>
+    </div>
+  </section>
+
+  <ContactBand
+    heading="Need help choosing the right service?"
+    text="Send the project type, location, and timing. ILGCS will help narrow the scope before the estimate."
+    formName="services-estimate"
+    formSubtitle="Send your remodeling or construction details and the team will follow up."
+    service="Services Estimate"
+  />
+</BaseLayout>

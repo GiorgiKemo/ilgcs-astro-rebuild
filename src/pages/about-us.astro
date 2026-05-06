@@ -1,0 +1,77 @@
+---
+import BaseLayout from "../layouts/BaseLayout.astro";
+import ContactBand from "../components/sections/ContactBand.astro";
+import PageHero from "../components/sections/PageHero.astro";
+import { companyAssets, localBusinessSchema, site } from "../data/site";
+---
+
+<BaseLayout
+  title="About Us | IL General Construction Services"
+  description="Learn about ILGCS, a Schaumburg-area remodeling and construction company serving homeowners with kitchen, bathroom, flooring, deck, masonry, and basement projects."
+  canonical="https://ilgcs.com/about-us/"
+  schema={localBusinessSchema}
+>
+  <PageHero
+    eyebrow="About ILGCS"
+    title="Built right the first time"
+    subtitle="IL General Construction Services is a local remodeling and construction team focused on practical planning, clear communication, and clean workmanship."
+    image={companyAssets.hero}
+  />
+
+  <section class="section">
+    <div class="container split-section">
+      <div>
+        <h2>Local remodeling work with a broader construction background</h2>
+        <p>
+          The original ILGCS site presents the company as more than a single-service bathroom contractor. The Astro rebuild
+          now reflects that broader positioning with pages for kitchens, baths, flooring, decks, masonry, one-day updates,
+          and basements.
+        </p>
+        <p>
+          The goal is simple: show the work clearly, explain the service areas, and make it easy for homeowners to request
+          an estimate without forcing the business into a custom backend.
+        </p>
+        <ul class="check-list">
+          <li>Based in Schaumburg, Illinois</li>
+          <li>Serving nearby northwest Chicago suburbs</li>
+          <li>Estimate-first workflow for remodel and construction projects</li>
+        </ul>
+      </div>
+      <div class="contact-card">
+        <h3>Company details</h3>
+        <p><strong>Phone:</strong> <a href={site.phoneHref}>{site.phone}</a></p>
+        <p><strong>Email:</strong> <a href={`mailto:${site.email}`}>{site.email}</a></p>
+        <p><strong>Office:</strong> <a href={site.mapUrl} target="_blank" rel="noreferrer">{site.address}</a></p>
+        <a class="btn" href="/request-a-quote/">Request a Quote</a>
+      </div>
+    </div>
+  </section>
+
+  <section class="section section-soft">
+    <div class="container process-grid">
+      <article>
+        <strong>01</strong>
+        <h3>Listen first</h3>
+        <p>Understand the project, constraints, budget direction, and timeline.</p>
+      </article>
+      <article>
+        <strong>02</strong>
+        <h3>Clarify scope</h3>
+        <p>Define materials, measurements, and the practical sequence before build work begins.</p>
+      </article>
+      <article>
+        <strong>03</strong>
+        <h3>Finish cleanly</h3>
+        <p>Keep the job organized and leave the homeowner with a finished, usable space.</p>
+      </article>
+    </div>
+  </section>
+
+  <ContactBand
+    heading="Ready to talk with ILGCS?"
+    text="Request a remodeling or construction estimate from the Schaumburg-area team."
+    formName="about-estimate"
+    formSubtitle="Send your project details and the team will follow up."
+    service="About Page Inquiry"
+  />
+</BaseLayout>

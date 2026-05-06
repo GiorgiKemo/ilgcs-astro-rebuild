@@ -1,0 +1,46 @@
+---
+import BaseLayout from "../layouts/BaseLayout.astro";
+import ContactBand from "../components/sections/ContactBand.astro";
+import PageHero from "../components/sections/PageHero.astro";
+import Testimonials from "../components/sections/Testimonials.astro";
+import { companyAssets, localBusinessSchema, reviews } from "../data/site";
+---
+
+<BaseLayout
+  title="Testimonials | ILGCS Reviews"
+  description="Read ILGCS customer testimonials for remodeling, bathroom, and general construction work in Schaumburg and nearby Illinois communities."
+  canonical="https://ilgcs.com/testimonials/"
+  schema={localBusinessSchema}
+>
+  <PageHero
+    eyebrow="Testimonials"
+    title="Customer feedback"
+    subtitle="A dedicated reviews page gives visitors proof before they request an estimate."
+    image={companyAssets.menuBg}
+  />
+
+  <Testimonials />
+
+  <section class="section section-soft">
+    <div class="container">
+      <h2 class="section-title">Review highlights</h2>
+      <div class="review-grid">
+        {reviews.map((review) => (
+          <article class="review-card">
+            <div class="stars" aria-label="Five star rating">★★★★★</div>
+            <p>{review.text}</p>
+            <strong>{review.name}</strong>
+          </article>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <ContactBand
+    heading="Ready to become the next project?"
+    text="Request a remodeling or construction estimate and tell ILGCS what you need built or updated."
+    formName="testimonials-estimate"
+    formSubtitle="Send your project details and the team will follow up."
+    service="Testimonials Page Inquiry"
+  />
+</BaseLayout>

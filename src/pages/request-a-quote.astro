@@ -1,0 +1,49 @@
+---
+import BaseLayout from "../layouts/BaseLayout.astro";
+import PageHero from "../components/sections/PageHero.astro";
+import LeadForm from "../components/ui/LeadForm.astro";
+import { companyAssets, localBusinessSchema, servicePages, site } from "../data/site";
+---
+
+<BaseLayout
+  title="Request a Quote | ILGCS"
+  description="Request a remodeling or construction quote from IL General Construction Services for kitchen, bathroom, flooring, deck, masonry, basement, or walk-in shower projects."
+  canonical="https://ilgcs.com/request-a-quote/"
+  schema={localBusinessSchema}
+  showPopup={false}
+>
+  <PageHero
+    eyebrow="Request a Quote"
+    title="Tell us about your project"
+    subtitle="Use one form for kitchen remodeling, bathroom remodeling, flooring, decks, masonry, basement updates, and walk-in shower estimates."
+    image={companyAssets.quoteBg}
+    ctaHref={site.phoneHref}
+    ctaLabel={`Call ${site.phone}`}
+  />
+
+  <section class="section">
+    <div class="container service-detail-layout">
+      <div class="content-panel">
+        <h2>What to include in your request</h2>
+        <p>
+          A useful quote request should include the project type, location, rough timing, and anything already decided
+          about materials or design direction.
+        </p>
+        <ul class="check-list">
+          {servicePages.map((service) => <li>{service.title}</li>)}
+          <li>Walk-in shower and tub-to-shower projects</li>
+          <li>Photos, measurements, and service-area details when available</li>
+        </ul>
+      </div>
+      <aside class="sticky-card">
+        <LeadForm
+          formName="request-a-quote"
+          title="Request a Quote"
+          subtitle="Tell us what you need and the ILGCS team will follow up."
+          service="General Quote Request"
+          buttonText="Request Quote"
+        />
+      </aside>
+    </div>
+  </section>
+</BaseLayout>

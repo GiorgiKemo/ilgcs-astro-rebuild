@@ -1,16 +1,32 @@
 ---
 import LeadForm from "../ui/LeadForm.astro";
 import { site } from "../../data/site";
+
+interface Props {
+  heading?: string;
+  text?: string;
+  formName?: string;
+  formTitle?: string;
+  formSubtitle?: string;
+  service?: string;
+}
+
+const {
+  heading = "Ready to update your bathroom?",
+  text =
+    "Request a bath remodel estimate, ask about current discount offers, or call ILGCS directly for help choosing the right next step.",
+  formName = "contact-estimate",
+  formTitle = "Get A Free Estimate",
+  formSubtitle = "Send your bathroom remodel details and the team will follow up.",
+  service = "Bathroom Remodel Estimate"
+} = Astro.props;
 ---
 
 <section class="section section-blue" id="contact">
   <div class="container contact-grid">
     <div class="contact-info">
-      <h2>Ready to update your bathroom?</h2>
-      <p>
-        Request a bath remodel estimate, ask about current discount offers, or call ILGCS directly for help choosing
-        the right next step.
-      </p>
+      <h2>{heading}</h2>
+      <p>{text}</p>
       <ul class="contact-list">
         <li><strong>Phone:</strong> <a href={site.phoneHref}>{site.phone}</a></li>
         <li><strong>Email:</strong> <a href={`mailto:${site.email}`}>{site.email}</a></li>
@@ -18,10 +34,10 @@ import { site } from "../../data/site";
       </ul>
     </div>
     <LeadForm
-      formName="contact-estimate"
-      title="Get A Free Estimate"
-      subtitle="Send your bathroom remodel details and the team will follow up."
-      service="Bathroom Remodel Estimate"
+      formName={formName}
+      title={formTitle}
+      subtitle={formSubtitle}
+      service={service}
       buttonText="Submit"
     />
   </div>

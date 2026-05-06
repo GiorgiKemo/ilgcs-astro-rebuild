@@ -1,0 +1,45 @@
+---
+import BaseLayout from "../layouts/BaseLayout.astro";
+import PageHero from "../components/sections/PageHero.astro";
+import LeadForm from "../components/ui/LeadForm.astro";
+import { companyAssets, localBusinessSchema, site, towns } from "../data/site";
+---
+
+<BaseLayout
+  title="Contact Us - Kitchen & Bathroom Remodeling Services, Chicago | ILGCS"
+  description="Contact IL General Construction Services for remodeling and construction estimates in Schaumburg, Chicago suburbs, and nearby Illinois communities."
+  canonical="https://ilgcs.com/contact-us/"
+  schema={localBusinessSchema}
+  showPopup={false}
+>
+  <PageHero
+    eyebrow="Contact"
+    title="Contact IL General Construction Services"
+    subtitle="Call, email, or send a project inquiry for remodeling and construction work near Schaumburg."
+    image={companyAssets.menuBg}
+    ctaHref={site.phoneHref}
+    ctaLabel={`Call ${site.phone}`}
+  />
+
+  <section class="section">
+    <div class="container contact-page-grid">
+      <div class="contact-card">
+        <h2>Office details</h2>
+        <p><strong>Phone:</strong> <a href={site.phoneHref}>{site.phone}</a></p>
+        <p><strong>Email:</strong> <a href={`mailto:${site.email}`}>{site.email}</a></p>
+        <p><strong>Office:</strong> <a href={site.mapUrl} target="_blank" rel="noreferrer">{site.address}</a></p>
+        <h3>Service area</h3>
+        <div class="area-list">
+          {towns.map((town) => <a href={`/bathroom-remodeling/${town.slug}/`}>{town.name}, IL</a>)}
+        </div>
+      </div>
+      <LeadForm
+        formName="contact-us"
+        title="Send a Message"
+        subtitle="Tell us about the project and the team will follow up."
+        service="Contact Page Inquiry"
+        buttonText="Send Message"
+      />
+    </div>
+  </section>
+</BaseLayout>

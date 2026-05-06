@@ -1,5 +1,5 @@
 ---
-import { navItems, site, towns } from "../data/site";
+import { navItems, servicePages, site, towns } from "../data/site";
 ---
 
 <footer class="footer">
@@ -8,17 +8,15 @@ import { navItems, site, towns } from "../data/site";
       <div>
         <img src={site.logo} alt={`${site.name} logo`} width="300" height="92" loading="lazy" />
         <p>
-          Bathroom remodeling, walk-in showers, and general construction services for Schaumburg and nearby Illinois
-          communities.
+          Kitchen remodeling, bathroom remodeling, flooring, decks, masonry, basements, and general construction services
+          for Schaumburg and nearby Illinois communities.
         </p>
       </div>
       <div>
         <h3>Services</h3>
         <ul>
-          <li><a href="/bath/">Bath Remodeling</a></li>
-          <li><a href="/walk-in-showers/schaumburg-il/">Walk-In Showers</a></li>
-          <li><a href="/bathroom-remodeling/schaumburg-il/">Bathroom Remodeling</a></li>
-          <li><a href="/lp/bath-remodel-offer/">Bath Remodel Offer</a></li>
+          {servicePages.slice(0, 6).map((service) => <li><a href={`/${service.slug}/`}>{service.title}</a></li>)}
+          <li><a href="/bath/">Walk-In Shower Offer</a></li>
         </ul>
       </div>
       <div>

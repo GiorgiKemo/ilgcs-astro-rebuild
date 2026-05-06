@@ -1,0 +1,46 @@
+---
+import BaseLayout from "../layouts/BaseLayout.astro";
+import ContactBand from "../components/sections/ContactBand.astro";
+import PageHero from "../components/sections/PageHero.astro";
+import { companyAssets, localBusinessSchema, portfolioItems } from "../data/site";
+---
+
+<BaseLayout
+  title="Portfolio | ILGCS Remodeling Projects"
+  description="View ILGCS portfolio examples for bathroom remodeling, shower conversions, safety upgrades, fixtures, flooring, and home improvement details."
+  canonical="https://ilgcs.com/portfolio/"
+  schema={localBusinessSchema}
+>
+  <PageHero
+    eyebrow="Portfolio"
+    title="Remodeling portfolio"
+    subtitle="A visual portfolio page for showcasing service work, finish options, and project details that help visitors trust the company before requesting an estimate."
+    image={companyAssets.quoteBg}
+  />
+
+  <section class="section">
+    <div class="container">
+      <h2 class="section-title">Recent work and finish details</h2>
+      <p class="section-lede">The portfolio is structured for real project photos, videos, before/after groups, and future category filters.</p>
+      <div class="portfolio-grid">
+        {portfolioItems.map((item) => (
+          <article class="portfolio-card">
+            <img src={item.image} alt={item.title} loading="lazy" />
+            <div>
+              <span>{item.category}</span>
+              <h3>{item.title}</h3>
+            </div>
+          </article>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <ContactBand
+    heading="Have a project like these?"
+    text="Send photos, scope notes, or a rough project idea and ILGCS will follow up with next steps."
+    formName="portfolio-estimate"
+    formSubtitle="Send your project details and the team will follow up."
+    service="Portfolio Inquiry"
+  />
+</BaseLayout>

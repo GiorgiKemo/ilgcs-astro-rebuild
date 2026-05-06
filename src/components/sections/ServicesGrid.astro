@@ -1,0 +1,27 @@
+---
+import { servicePages } from "../../data/site";
+
+interface Props {
+  limit?: number;
+}
+
+const { limit = servicePages.length } = Astro.props;
+const items = servicePages.slice(0, limit);
+---
+
+<div class="service-grid">
+  {
+    items.map((service) => (
+      <article class="service-card">
+        <a class="service-card-media" href={`/${service.slug}/`}>
+          <img src={service.image} alt={`${service.title} project example`} loading="lazy" />
+        </a>
+        <div class="service-card-body">
+          <h3><a href={`/${service.slug}/`}>{service.title}</a></h3>
+          <p>{service.summary}</p>
+          <a class="text-link" href={`/${service.slug}/`}>View service</a>
+        </div>
+      </article>
+    ))
+  }
+</div>
