@@ -885,8 +885,8 @@ textarea:focus-visible {
   min-height: calc(100svh - var(--hero-viewport-offset));
   overflow: hidden;
   background:
-    linear-gradient(90deg, rgba(255, 255, 255, 0.95) 0%, rgba(255, 255, 255, 0.86) 48%, rgba(255, 255, 255, 0.44) 100%),
-    var(--page-hero-image) center / cover no-repeat;
+    linear-gradient(90deg, rgba(255, 255, 255, 0.985) 0%, rgba(255, 255, 255, 0.95) 42%, rgba(255, 255, 255, 0.76) 64%, rgba(255, 255, 255, 0.38) 100%),
+    var(--page-hero-image) var(--page-hero-position, center) / cover no-repeat;
 }
 
 .page-hero::after {
@@ -908,7 +908,7 @@ textarea:focus-visible {
 }
 
 .page-hero-inner > div {
-  max-width: 760px;
+  max-width: 650px;
 }
 
 .eyebrow {
@@ -924,7 +924,7 @@ textarea:focus-visible {
 .page-hero h1 {
   margin: 0 0 16px;
   color: var(--blue);
-  font-size: clamp(42px, 6vw, 70px);
+  font-size: clamp(42px, 5.4vw, 64px);
   line-height: 1.02;
   font-weight: 900;
   text-wrap: balance;
@@ -932,9 +932,9 @@ textarea:focus-visible {
 
 .page-hero p {
   margin: 0;
-  max-width: 680px;
+  max-width: 620px;
   color: var(--text);
-  font-size: clamp(18px, 2.2vw, 24px);
+  font-size: clamp(18px, 2vw, 22px);
   font-weight: 600;
 }
 

@@ -6,6 +6,7 @@ interface Props {
   title: string;
   subtitle: string;
   image?: string;
+  imagePosition?: string;
   ctaHref?: string;
   ctaLabel?: string;
   viewportFit?: boolean;
@@ -16,6 +17,7 @@ const {
   title,
   subtitle,
   image = companyAssets.hero,
+  imagePosition = "center",
   ctaHref = "/request-a-quote/",
   ctaLabel = "Request a Quote",
   viewportFit = false
@@ -24,7 +26,10 @@ const {
 const showSecondaryCall = ctaHref !== site.phoneHref;
 ---
 
-<section class:list={["page-hero", viewportFit && "page-hero-fit"]} style={`--page-hero-image: url('${image}')`}>
+<section
+  class:list={["page-hero", viewportFit && "page-hero-fit"]}
+  style={`--page-hero-image: url('${image}'); --page-hero-position: ${imagePosition};`}
+>
   <div class="container page-hero-inner">
     <div>
       <span class="eyebrow">{eyebrow}</span>

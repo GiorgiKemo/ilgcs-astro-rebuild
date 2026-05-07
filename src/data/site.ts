@@ -107,7 +107,8 @@ export const servicePages = [
       "Flooring installation for remodels, replacements, and room updates where durability and finish quality matter.",
     description:
       "ILGCS installs and coordinates flooring as part of remodeling projects, helping homeowners choose surfaces that fit the room, traffic, and maintenance needs.",
-    image: bathAssets.covers.floor,
+    image: `${uploads}/2024/02/laminate-e1629861903346.jpg`,
+    heroImagePosition: "center",
     highlights: ["Removal and prep coordination", "Finish options for kitchens, baths, and basements", "Clean transitions and detail work"],
     seoTitle: "Flooring Installation in Schaumburg, IL | ILGCS",
     seoDescription:
