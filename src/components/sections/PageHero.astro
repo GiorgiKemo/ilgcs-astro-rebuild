@@ -8,6 +8,7 @@ interface Props {
   image?: string;
   ctaHref?: string;
   ctaLabel?: string;
+  viewportFit?: boolean;
 }
 
 const {
@@ -16,11 +17,12 @@ const {
   subtitle,
   image = companyAssets.hero,
   ctaHref = "/request-a-quote/",
-  ctaLabel = "Request a Quote"
+  ctaLabel = "Request a Quote",
+  viewportFit = false
 } = Astro.props;
 ---
 
-<section class="page-hero" style={`--page-hero-image: url('${image}')`}>
+<section class:list={["page-hero", viewportFit && "page-hero-fit"]} style={`--page-hero-image: url('${image}')`}>
   <div class="container page-hero-inner">
     <div>
       <span class="eyebrow">{eyebrow}</span>

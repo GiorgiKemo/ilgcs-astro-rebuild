@@ -7,6 +7,7 @@ interface Props {
   subtitle?: string;
   service?: string;
   buttonText?: string;
+  compact?: boolean;
 }
 
 const {
@@ -14,7 +15,8 @@ const {
   title = "Request Your Free Estimate",
   subtitle = "Tell us what you need and the ILGCS team will follow up.",
   service = "Bathroom Remodeling",
-  buttonText = "Submit"
+  buttonText = "Submit",
+  compact = false
 } = Astro.props;
 ---
 
@@ -22,7 +24,7 @@ const {
   <h3>{title}</h3>
   <p>{subtitle}</p>
   <form
-    class="lead-form"
+    class:list={["lead-form", compact && "lead-form-compact"]}
     name={formName}
     method="POST"
     action="/thank-you/"
@@ -37,8 +39,16 @@ const {
     <input class="input" type="text" name="name" placeholder="Your Name" autocomplete="name" />
     <input class="input" type="tel" name="phone" placeholder="Your Phone" autocomplete="tel" required />
     <input class="input" type="email" name="email" placeholder="Your Email" autocomplete="email" />
-    <input class="input" type="text" name="address" placeholder="Address" autocomplete="street-address" />
-    <textarea class="textarea" name="message" rows="4" placeholder="Project Type / Message">{service}</textarea>
+    {
+      compact ? (
+        <input type="hidden" name="message" value={service} />
+      ) : (
+        <>
+          <input class="input" type="text" name="address" placeholder="Address" autocomplete="street-address" />
+          <textarea class="textarea" name="message" rows="4" placeholder="Project Type / Message">{service}</textarea>
+        </>
+      )
+    }
     <button class="btn" type="submit">{buttonText}</button>
     <span class="form-note">Prefer calling? <a href={site.phoneHref}>{site.phone}</a></span>
   </form>
