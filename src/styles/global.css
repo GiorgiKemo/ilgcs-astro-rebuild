@@ -14,10 +14,10 @@
   --radius: 8px;
   --max: 1140px;
   --hero-viewport-offset: 124px;
-  --motion-fast: 160ms;
-  --motion-base: 240ms;
-  --motion-slow: 360ms;
-  --ease-out: cubic-bezier(0.22, 1, 0.36, 1);
+  --motion-fast: 220ms;
+  --motion-base: 420ms;
+  --motion-slow: 620ms;
+  --ease-out: cubic-bezier(0.16, 1, 0.3, 1);
   --hover-shadow: 0 22px 46px rgba(22, 43, 98, 0.16);
 }
 
@@ -138,8 +138,9 @@ legend {
   text-decoration: none;
   text-transform: uppercase;
   cursor: pointer;
+  will-change: transform, box-shadow;
   transition:
-    background var(--motion-fast) ease,
+    background-color var(--motion-fast) ease,
     color var(--motion-fast) ease,
     border-color var(--motion-fast) ease,
     transform var(--motion-base) var(--ease-out),
@@ -251,6 +252,7 @@ textarea:focus-visible {
 .logo img {
   width: 180px;
   height: auto;
+  will-change: transform;
   transition: transform var(--motion-base) var(--ease-out);
 }
 
@@ -1179,6 +1181,7 @@ textarea:focus-visible {
 .blog-card,
 .contact-card,
 .offer-card {
+  will-change: transform, box-shadow;
   transition:
     border-color var(--motion-fast) ease,
     transform var(--motion-base) var(--ease-out),
@@ -1192,6 +1195,7 @@ textarea:focus-visible {
 .service-card-media img,
 .portfolio-card img,
 .image-stack img {
+  will-change: transform;
   transition: transform var(--motion-slow) var(--ease-out);
 }
 
@@ -1257,13 +1261,40 @@ textarea:focus-visible {
 }
 
 @media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto !important;
+  }
+
   *,
   *::before,
   *::after {
-    scroll-behavior: auto !important;
-    transition-duration: 0.01ms !important;
     animation-duration: 0.01ms !important;
     animation-iteration-count: 1 !important;
+  }
+
+  .btn:hover,
+  .choice label:hover,
+  .option-card:hover,
+  .feature-card:hover,
+  .swatch:hover,
+  .problem-card:hover,
+  .review-card:hover,
+  .stat-card:hover,
+  .process-grid article:hover,
+  .service-card:hover,
+  .portfolio-card:hover,
+  .blog-card:hover,
+  .contact-card:hover,
+  .offer-card:hover,
+  .logo:hover img,
+  .option-card:hover .option-media img,
+  .option-card:hover .option-media video,
+  .feature-card:hover img,
+  .swatch:hover img,
+  .service-card:hover .service-card-media img,
+  .portfolio-card:hover img,
+  .image-stack img:hover {
+    transform: none !important;
   }
 }
 
