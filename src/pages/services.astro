@@ -4,6 +4,7 @@ import ContactBand from "../components/sections/ContactBand.astro";
 import PageHero from "../components/sections/PageHero.astro";
 import ServicesGrid from "../components/sections/ServicesGrid.astro";
 import { companyAssets, localBusinessSchema, servicePages } from "../data/site";
+import { withBase } from "../utils/url";
 ---
 
 <BaseLayout
@@ -53,7 +54,7 @@ import { companyAssets, localBusinessSchema, servicePages } from "../data/site";
     <div class="container">
       <h2 class="section-title">All service URLs from the original menu</h2>
       <div class="area-list service-link-list">
-        {servicePages.map((service) => <a href={`/${service.slug}/`}>{service.title}</a>)}
+        {servicePages.map((service) => <a href={withBase(`/${service.slug}/`)}>{service.title}</a>)}
       </div>
     </div>
   </section>

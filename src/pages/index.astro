@@ -5,6 +5,7 @@ import PageHero from "../components/sections/PageHero.astro";
 import ServicesGrid from "../components/sections/ServicesGrid.astro";
 import Testimonials from "../components/sections/Testimonials.astro";
 import { companyAssets, companyProof, localBusinessSchema, portfolioItems, servicePages } from "../data/site";
+import { withBase } from "../utils/url";
 ---
 
 <BaseLayout
@@ -57,7 +58,7 @@ import { companyAssets, companyProof, localBusinessSchema, portfolioItems, servi
           <li>Local service for Schaumburg and nearby Illinois communities</li>
           <li>Estimate-first process with clear scope before work begins</li>
         </ul>
-        <a class="btn" href="/services/">View All Services</a>
+        <a class="btn" href={withBase("/services/")}>View All Services</a>
       </div>
       <div class="image-stack">
         {companyAssets.icons.map((image, index) => (
@@ -73,7 +74,7 @@ import { companyAssets, companyProof, localBusinessSchema, portfolioItems, servi
       <p class="section-lede">A quick look at the type of kitchen, bath, and safety-focused remodeling work the site needs to showcase.</p>
       <div class="portfolio-grid compact">
         {portfolioItems.slice(0, 6).map((item) => (
-          <a class="portfolio-card" href={item.href} aria-label={`View related service for ${item.title}`}>
+          <a class="portfolio-card" href={withBase(item.href)} aria-label={`View related service for ${item.title}`}>
             <img src={item.image} alt={item.title} loading="lazy" />
             <div>
               <span>{item.category}</span>
@@ -83,7 +84,7 @@ import { companyAssets, companyProof, localBusinessSchema, portfolioItems, servi
         ))}
       </div>
       <div class="centered-action">
-        <a class="btn btn-blue" href="/portfolio/">View Portfolio</a>
+        <a class="btn btn-blue" href={withBase("/portfolio/")}>View Portfolio</a>
       </div>
     </div>
   </section>
@@ -94,8 +95,8 @@ import { companyAssets, companyProof, localBusinessSchema, portfolioItems, servi
     <div class="container">
       <h2 class="section-title">Popular service links</h2>
       <div class="area-list service-link-list">
-        {servicePages.map((service) => <a href={`/${service.slug}/`}>{service.title}</a>)}
-        <a href="/bath/">Walk-In Shower Offer</a>
+        {servicePages.map((service) => <a href={withBase(`/${service.slug}/`)}>{service.title}</a>)}
+        <a href={withBase("/bath/")}>Walk-In Shower Offer</a>
       </div>
     </div>
   </section>

@@ -3,6 +3,7 @@ import BaseLayout from "../layouts/BaseLayout.astro";
 import PageHero from "../components/sections/PageHero.astro";
 import LeadForm from "../components/ui/LeadForm.astro";
 import { companyAssets, localBusinessSchema, site, towns } from "../data/site";
+import { withBase } from "../utils/url";
 ---
 
 <BaseLayout
@@ -30,7 +31,7 @@ import { companyAssets, localBusinessSchema, site, towns } from "../data/site";
         <p><strong>Office:</strong> <a href={site.mapUrl} target="_blank" rel="noreferrer">{site.address}</a></p>
         <h3>Service area</h3>
         <div class="area-list">
-          {towns.map((town) => <a href={`/bathroom-remodeling/${town.slug}/`}>{town.name}, IL</a>)}
+          {towns.map((town) => <a href={withBase(`/bathroom-remodeling/${town.slug}/`)}>{town.name}, IL</a>)}
         </div>
       </div>
       <LeadForm

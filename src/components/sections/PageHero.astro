@@ -1,5 +1,6 @@
 ---
 import { companyAssets, site } from "../../data/site";
+import { withBase } from "../../utils/url";
 
 interface Props {
   eyebrow?: string;
@@ -36,7 +37,7 @@ const showSecondaryCall = ctaHref !== site.phoneHref;
       <h1>{title}</h1>
       <p>{subtitle}</p>
       <div class="hero-actions">
-        <a class="btn" href={ctaHref}>{ctaLabel}</a>
+        <a class="btn" href={withBase(ctaHref)}>{ctaLabel}</a>
         {showSecondaryCall && <a class="btn btn-outline" href={site.phoneHref}>Call {site.phone}</a>}
       </div>
     </div>

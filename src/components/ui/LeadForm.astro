@@ -1,5 +1,6 @@
 ---
 import { site } from "../../data/site";
+import { withBase } from "../../utils/url";
 
 interface Props {
   formName?: string;
@@ -27,7 +28,7 @@ const {
     class:list={["lead-form", compact && "lead-form-compact"]}
     name={formName}
     method="POST"
-    action="/thank-you/"
+    action={withBase("/thank-you/")}
     data-netlify="true"
     netlify-honeypot="bot-field"
   >

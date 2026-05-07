@@ -1,6 +1,7 @@
 ---
 import LeadForm from "../ui/LeadForm.astro";
 import { towns } from "../../data/site";
+import { withBase } from "../../utils/url";
 
 interface Props {
   town?: string;
@@ -31,7 +32,7 @@ const heading = title ?? `${service[0].toUpperCase()}${service.slice(1)} in ${to
       </ul>
       <h3>Nearby service areas</h3>
       <div class="area-list">
-        {towns.map((item) => <a href={`/bathroom-remodeling/${item.slug}/`}>{item.name}</a>)}
+          {towns.map((item) => <a href={withBase(`/bathroom-remodeling/${item.slug}/`)}>{item.name}</a>)}
       </div>
     </div>
     <LeadForm

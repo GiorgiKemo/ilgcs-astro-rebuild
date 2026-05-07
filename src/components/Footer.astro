@@ -1,5 +1,6 @@
 ---
 import { navItems, servicePages, site, towns } from "../data/site";
+import { withBase } from "../utils/url";
 ---
 
 <footer class="footer">
@@ -15,20 +16,20 @@ import { navItems, servicePages, site, towns } from "../data/site";
       <div>
         <h3>Services</h3>
         <ul>
-          {servicePages.slice(0, 6).map((service) => <li><a href={`/${service.slug}/`}>{service.title}</a></li>)}
-          <li><a href="/bath/">Walk-In Shower Offer</a></li>
+          {servicePages.slice(0, 6).map((service) => <li><a href={withBase(`/${service.slug}/`)}>{service.title}</a></li>)}
+          <li><a href={withBase("/bath/")}>Walk-In Shower Offer</a></li>
         </ul>
       </div>
       <div>
         <h3>Navigation</h3>
         <ul>
-          {navItems.map((item) => <li><a href={item.href}>{item.label}</a></li>)}
+          {navItems.map((item) => <li><a href={withBase(item.href)}>{item.label}</a></li>)}
         </ul>
       </div>
       <div>
         <h3>Service Areas</h3>
         <ul>
-          {towns.slice(0, 6).map((town) => <li><a href={`/bathroom-remodeling/${town.slug}/`}>{town.name}, IL</a></li>)}
+          {towns.slice(0, 6).map((town) => <li><a href={withBase(`/bathroom-remodeling/${town.slug}/`)}>{town.name}, IL</a></li>)}
         </ul>
       </div>
     </div>

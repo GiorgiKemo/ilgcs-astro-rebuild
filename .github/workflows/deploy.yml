@@ -23,6 +23,9 @@ jobs:
 
       - name: Install, build, and upload site
         uses: withastro/action@v6
+        env:
+          ASTRO_BASE: /ilgcs-astro-rebuild
+          ASTRO_SITE: https://${{ github.repository_owner }}.github.io/ilgcs-astro-rebuild
         with:
           node-version: 24
 
