@@ -13,6 +13,7 @@
   --shadow: 0 18px 45px rgba(22, 43, 98, 0.14);
   --radius: 8px;
   --max: 1140px;
+  --hero-viewport-offset: 124px;
 }
 
 * {
@@ -823,6 +824,7 @@ legend {
 
 .page-hero {
   position: relative;
+  min-height: calc(100svh - var(--hero-viewport-offset));
   overflow: hidden;
   background:
     linear-gradient(90deg, rgba(255, 255, 255, 0.95) 0%, rgba(255, 255, 255, 0.86) 48%, rgba(255, 255, 255, 0.44) 100%),
@@ -842,9 +844,9 @@ legend {
   position: relative;
   z-index: 1;
   display: grid;
-  min-height: 430px;
+  min-height: calc(100svh - var(--hero-viewport-offset));
   align-items: center;
-  padding: 72px 0;
+  padding: clamp(54px, 8svh, 82px) 0;
 }
 
 .page-hero-inner > div {
@@ -1286,6 +1288,10 @@ legend {
 }
 
 @media (min-width: 1025px) and (max-height: 850px) {
+  :root {
+    --hero-viewport-offset: 118px;
+  }
+
   .header-inner {
     min-height: 76px;
   }
@@ -1384,6 +1390,10 @@ legend {
 }
 
 @media (max-width: 720px) {
+  :root {
+    --hero-viewport-offset: 69px;
+  }
+
   .container {
     width: min(var(--max), calc(100% - 28px));
   }
@@ -1431,14 +1441,37 @@ legend {
 
   .page-hero-fit {
     min-height: calc(100svh - 69px);
+    background: #fff;
+  }
+
+  .page-hero-fit::before {
+    position: absolute;
+    inset: -8px;
+    z-index: 0;
     background:
-      linear-gradient(180deg, rgba(255, 255, 255, 0.98) 0%, rgba(255, 255, 255, 0.9) 52%, rgba(255, 255, 255, 0.56) 100%),
+      linear-gradient(180deg, rgba(255, 255, 255, 0.99) 0%, rgba(255, 255, 255, 0.93) 54%, rgba(255, 255, 255, 0.82) 100%),
       var(--page-hero-image) 64% center / cover no-repeat;
+    content: "";
+    filter: blur(1.5px) saturate(0.9);
   }
 
   .page-hero-fit::after {
-    inset: auto -24% -38% 28%;
-    height: 58%;
+    position: absolute;
+    right: 0;
+    bottom: 18px;
+    left: 0;
+    z-index: 1;
+    height: 94px;
+    background:
+      linear-gradient(90deg, rgba(255, 255, 255, 0.92) 0%, rgba(255, 255, 255, 0.72) 48%, rgba(255, 255, 255, 0.24) 100%),
+      linear-gradient(180deg, rgba(255, 255, 255, 0.28), rgba(255, 255, 255, 0.34)),
+      var(--page-hero-image) 100% 100% / auto calc(84svh - 58px) no-repeat;
+    content: "";
+    filter: blur(0.35px) saturate(0.82) brightness(1.03);
+    mask-image: linear-gradient(180deg, transparent 0%, #000 24%, #000 76%, transparent 100%);
+    pointer-events: none;
+    transform: none;
+    -webkit-mask-image: linear-gradient(180deg, transparent 0%, #000 24%, #000 76%, transparent 100%);
   }
 
   .hero-inner {
@@ -1448,12 +1481,12 @@ legend {
   }
 
   .page-hero-inner {
-    min-height: auto;
-    padding: 54px 0;
+    min-height: calc(100svh - var(--hero-viewport-offset));
+    padding: clamp(32px, 6.5svh, 54px) 0;
   }
 
   .page-hero-fit .page-hero-inner {
-    min-height: calc(100svh - 69px);
+    z-index: 2;
     padding: clamp(26px, 5svh, 38px) 0 clamp(34px, 6svh, 50px);
   }
 
@@ -1676,6 +1709,10 @@ legend {
 }
 
 @media (max-width: 380px) {
+  :root {
+    --hero-viewport-offset: 65px;
+  }
+
   .container {
     width: min(var(--max), calc(100% - 26px));
   }
@@ -1700,8 +1737,11 @@ legend {
     min-height: calc(100svh - 65px);
   }
 
+  .page-hero-fit::before {
+    background-size: cover;
+  }
+
   .page-hero-fit .page-hero-inner {
-    min-height: calc(100svh - 65px);
     padding: 24px 0 36px;
   }
 
@@ -1736,5 +1776,22 @@ legend {
 
   .proof-card span {
     font-size: 8.8px;
+  }
+}
+
+@media (max-width: 720px) and (max-height: 700px) {
+  .page-hero-fit::before {
+    inset: -8px;
+  }
+
+  .page-hero-fit::after {
+    bottom: 8px;
+    height: 58px;
+  }
+}
+
+@media (max-width: 380px) and (max-height: 700px) {
+  .page-hero-fit::after {
+    height: 54px;
   }
 }

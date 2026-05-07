@@ -20,6 +20,8 @@ const {
   ctaLabel = "Request a Quote",
   viewportFit = false
 } = Astro.props;
+
+const showSecondaryCall = ctaHref !== site.phoneHref;
 ---
 
 <section class:list={["page-hero", viewportFit && "page-hero-fit"]} style={`--page-hero-image: url('${image}')`}>
@@ -30,7 +32,7 @@ const {
       <p>{subtitle}</p>
       <div class="hero-actions">
         <a class="btn" href={ctaHref}>{ctaLabel}</a>
-        <a class="btn btn-outline" href={site.phoneHref}>Call {site.phone}</a>
+        {showSecondaryCall && <a class="btn btn-outline" href={site.phoneHref}>Call {site.phone}</a>}
       </div>
     </div>
   </div>
