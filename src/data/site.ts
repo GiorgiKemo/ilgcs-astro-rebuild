@@ -172,14 +172,14 @@ export const servicePages = [
 ];
 
 export const portfolioItems = [
-  { title: "Kitchen Layout Update", category: "Kitchen Remodeling", image: companyAssets.hero },
-  { title: "Tub-To-Shower Conversion", category: "Bathroom Remodeling", image: bathAssets.covers.tubToShower },
-  { title: "Custom Shower Doors", category: "Bathroom Remodeling", image: bathAssets.covers.showerDoors },
-  { title: "Shower Seat Detail", category: "Safety Upgrades", image: bathAssets.covers.showerSeat },
-  { title: "Slip-Resistant Shower Floor", category: "Bathroom Remodeling", image: bathAssets.covers.floor },
-  { title: "Fixtures And Wall Finish", category: "Bathroom Remodeling", image: bathAssets.covers.fixtures },
-  { title: "Grab Bar Installation", category: "Safety Upgrades", image: bathAssets.covers.grabBars },
-  { title: "Low-Maintenance Surface", category: "Bathroom Remodeling", image: bathAssets.covers.easyClean }
+  { title: "Kitchen Layout Update", category: "Kitchen Remodeling", image: companyAssets.hero, href: "/kitchen-remodeling-chicago-il/" },
+  { title: "Tub-To-Shower Conversion", category: "Bathroom Remodeling", image: bathAssets.covers.tubToShower, href: "/bath/" },
+  { title: "Custom Shower Doors", category: "Bathroom Remodeling", image: bathAssets.covers.showerDoors, href: "/bath/" },
+  { title: "Shower Seat Detail", category: "Safety Upgrades", image: bathAssets.covers.showerSeat, href: "/bath/" },
+  { title: "Slip-Resistant Shower Floor", category: "Bathroom Remodeling", image: bathAssets.covers.floor, href: "/bathroom-remodeling-chicago-il/" },
+  { title: "Fixtures And Wall Finish", category: "Bathroom Remodeling", image: bathAssets.covers.fixtures, href: "/bathroom-remodeling-chicago-il/" },
+  { title: "Grab Bar Installation", category: "Safety Upgrades", image: bathAssets.covers.grabBars, href: "/bath/" },
+  { title: "Low-Maintenance Surface", category: "Bathroom Remodeling", image: bathAssets.covers.easyClean, href: "/bathroom-remodeling-chicago-il/" }
 ];
 
 export const blogPosts = [

@@ -73,13 +73,13 @@ import { companyAssets, companyProof, localBusinessSchema, portfolioItems, servi
       <p class="section-lede">A quick look at the type of kitchen, bath, and safety-focused remodeling work the site needs to showcase.</p>
       <div class="portfolio-grid compact">
         {portfolioItems.slice(0, 6).map((item) => (
-          <article class="portfolio-card">
+          <a class="portfolio-card" href={item.href} aria-label={`View related service for ${item.title}`}>
             <img src={item.image} alt={item.title} loading="lazy" />
             <div>
               <span>{item.category}</span>
               <h3>{item.title}</h3>
             </div>
-          </article>
+          </a>
         ))}
       </div>
       <div class="centered-action">

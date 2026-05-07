@@ -24,13 +24,13 @@ import { companyAssets, localBusinessSchema, portfolioItems } from "../data/site
       <p class="section-lede">The portfolio is structured for real project photos, videos, before/after groups, and future category filters.</p>
       <div class="portfolio-grid">
         {portfolioItems.map((item) => (
-          <article class="portfolio-card">
+          <a class="portfolio-card" href={item.href} aria-label={`View related service for ${item.title}`}>
             <img src={item.image} alt={item.title} loading="lazy" />
             <div>
               <span>{item.category}</span>
               <h3>{item.title}</h3>
             </div>
-          </article>
+          </a>
         ))}
       </div>
     </div>
