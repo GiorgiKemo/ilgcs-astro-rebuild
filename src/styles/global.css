@@ -14,6 +14,11 @@
   --radius: 8px;
   --max: 1140px;
   --hero-viewport-offset: 124px;
+  --motion-fast: 160ms;
+  --motion-base: 240ms;
+  --motion-slow: 360ms;
+  --ease-out: cubic-bezier(0.22, 1, 0.36, 1);
+  --hover-shadow: 0 22px 46px rgba(22, 43, 98, 0.16);
 }
 
 * {
@@ -133,13 +138,33 @@ legend {
   text-decoration: none;
   text-transform: uppercase;
   cursor: pointer;
-  transition: background 0.2s ease, transform 0.2s ease, box-shadow 0.2s ease;
+  transition:
+    background var(--motion-fast) ease,
+    color var(--motion-fast) ease,
+    border-color var(--motion-fast) ease,
+    transform var(--motion-base) var(--ease-out),
+    box-shadow var(--motion-base) var(--ease-out);
 }
 
 .btn:hover {
   background: var(--red-dark);
-  transform: translateY(-1px);
-  box-shadow: 0 12px 24px rgba(186, 16, 16, 0.2);
+  transform: translateY(-2px);
+  box-shadow: 0 14px 28px rgba(186, 16, 16, 0.22);
+}
+
+.btn:active {
+  transform: translateY(0);
+  box-shadow: 0 8px 18px rgba(186, 16, 16, 0.16);
+}
+
+.btn:focus-visible,
+a:focus-visible,
+button:focus-visible,
+input:focus-visible,
+select:focus-visible,
+textarea:focus-visible {
+  outline: 3px solid rgba(22, 43, 98, 0.22);
+  outline-offset: 3px;
 }
 
 .btn-blue {
@@ -148,6 +173,7 @@ legend {
 
 .btn-blue:hover {
   background: var(--blue-dark);
+  box-shadow: 0 14px 28px rgba(22, 43, 98, 0.2);
 }
 
 .btn-outline {
@@ -159,6 +185,7 @@ legend {
 .btn-outline:hover {
   background: var(--blue);
   color: var(--white);
+  box-shadow: 0 14px 28px rgba(22, 43, 98, 0.18);
 }
 
 .topbar {
@@ -188,6 +215,11 @@ legend {
 
 .topbar a {
   text-decoration: none;
+  transition: color var(--motion-fast) ease;
+}
+
+.topbar a:hover {
+  color: var(--red);
 }
 
 .site-header {
@@ -219,6 +251,7 @@ legend {
 .logo img {
   width: 180px;
   height: auto;
+  transition: transform var(--motion-base) var(--ease-out);
 }
 
 .nav {
@@ -232,7 +265,23 @@ legend {
 }
 
 .nav a {
+  position: relative;
   text-decoration: none;
+  transition: color var(--motion-fast) ease;
+}
+
+.nav a::after {
+  position: absolute;
+  right: 0;
+  bottom: -8px;
+  left: 0;
+  height: 2px;
+  border-radius: 999px;
+  background: var(--red);
+  content: "";
+  transform: scaleX(0);
+  transform-origin: left;
+  transition: transform var(--motion-base) var(--ease-out);
 }
 
 .nav a:hover {
@@ -449,7 +498,12 @@ legend {
   text-align: center;
   font-weight: 800;
   cursor: pointer;
-  transition: border 0.2s ease, color 0.2s ease, background 0.2s ease, box-shadow 0.2s ease;
+  transition:
+    border var(--motion-fast) ease,
+    color var(--motion-fast) ease,
+    background var(--motion-fast) ease,
+    transform var(--motion-base) var(--ease-out),
+    box-shadow var(--motion-base) var(--ease-out);
 }
 
 .choice input:checked + label {
@@ -485,6 +539,10 @@ legend {
   color: var(--text);
   padding: 15px 16px;
   outline: none;
+  transition:
+    border-color var(--motion-fast) ease,
+    box-shadow var(--motion-fast) ease,
+    transform var(--motion-base) var(--ease-out);
 }
 
 .input:focus,
@@ -1099,6 +1157,106 @@ legend {
 
 .service-link-list {
   justify-content: center;
+}
+
+.option-card,
+.feature-card,
+.swatch,
+.problem-card,
+.review-card,
+.stat-card,
+.process-grid article,
+.service-card,
+.portfolio-card,
+.blog-card,
+.contact-card,
+.offer-card {
+  transition:
+    border-color var(--motion-fast) ease,
+    transform var(--motion-base) var(--ease-out),
+    box-shadow var(--motion-base) var(--ease-out);
+}
+
+.option-media img,
+.option-media video,
+.feature-card img,
+.swatch img,
+.service-card-media img,
+.portfolio-card img,
+.image-stack img {
+  transition: transform var(--motion-slow) var(--ease-out);
+}
+
+.text-link,
+.area-list a,
+.service-card h3 a,
+.blog-card h3 a {
+  transition: color var(--motion-fast) ease, border-color var(--motion-fast) ease;
+}
+
+@media (hover: hover) and (pointer: fine) {
+  .logo:hover img {
+    transform: translateY(-1px) scale(1.025);
+  }
+
+  .nav a:hover::after {
+    transform: scaleX(1);
+  }
+
+  .choice label:hover,
+  .input:hover,
+  .textarea:hover {
+    border-color: rgba(22, 43, 98, 0.35);
+  }
+
+  .choice label:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 10px 22px rgba(22, 43, 98, 0.08);
+  }
+
+  .option-card:hover,
+  .feature-card:hover,
+  .swatch:hover,
+  .problem-card:hover,
+  .review-card:hover,
+  .stat-card:hover,
+  .process-grid article:hover,
+  .service-card:hover,
+  .portfolio-card:hover,
+  .blog-card:hover,
+  .contact-card:hover,
+  .offer-card:hover {
+    border-color: rgba(22, 43, 98, 0.18);
+    transform: translateY(-5px);
+    box-shadow: var(--hover-shadow);
+  }
+
+  .option-card:hover .option-media img,
+  .option-card:hover .option-media video,
+  .feature-card:hover img,
+  .swatch:hover img,
+  .service-card:hover .service-card-media img,
+  .portfolio-card:hover img,
+  .image-stack img:hover {
+    transform: scale(1.045);
+  }
+
+  .text-link:hover,
+  .service-card h3 a:hover,
+  .blog-card h3 a:hover {
+    color: var(--blue);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    scroll-behavior: auto !important;
+    transition-duration: 0.01ms !important;
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+  }
 }
 
 .ad-hero {
